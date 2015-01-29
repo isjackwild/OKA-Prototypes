@@ -1,6 +1,9 @@
 $image-overlap: 40px;
 $max-text-width: 1300px;
 
+$section-content-margin: calc(130px + #{4vw});
+$section-content-margin-mob: calc(40px + #{2vw});
+
 
 .page-context.project{
 	padding: 40px;
@@ -10,11 +13,11 @@ $max-text-width: 1300px;
 }
 
 .project .project-section{
-	margin-bottom: calc(100px + #{4vw});
-	// border-bottom: 1px solid #ccc;
+	margin-bottom: $section-content-margin;
+	border-bottom: 1px solid #ccc;
 
 	@media (max-width: 600px){
-		margin-bottom: calc(60px + #{4vw});
+		margin-bottom: $section-content-margin-mob;
 	}
 
 	&:last-child{
@@ -37,10 +40,11 @@ $max-text-width: 1300px;
 }
 
 .project .project-section .image-wrap.full-width {
-	margin-bottom: calc(100px + #{2vw});
+	margin-bottom: $section-content-margin;
+	margin-right: 0;
 
 	@media (max-width: 600px){
-		margin-bottom: calc(40px + #{2vw});
+		margin-bottom: $section-content-margin-mob;
 	}
 }
 
@@ -56,6 +60,7 @@ $max-text-width: 1300px;
 	margin: 0 auto 100px auto;
 	width: 100%;
 	max-width: 1500px;
+	// background: rgba(255,0,0,0.2);
 }
 
 
@@ -64,16 +69,12 @@ $max-text-width: 1300px;
 }
 
 .project .project-section .image-dip{
+	padding: 50px 0;
 	margin: 0 auto 100px auto;
 	width: 100%;
 	max-width: 1500px;
-}
-
-.project .project-section .image-dip > div{
-	width: 49%;
-	margin: 0;
-	display: inline-block;
-	text-align: center;
+	// background: rgba(0,0,255,0.2);
+	white-space: nowrap;
 }
 
 
@@ -81,13 +82,18 @@ $max-text-width: 1300px;
 //image-wrap styling
 .project .project-section .image-wrap {
 	display: inline-block;
-	width: calc(50% + #{$image-overlap/2});
+	width: 45%;
 	vertical-align: middle;
-	margin-bottom: 100px;
+	margin-bottom: $section-content-margin;
+	position: relative;
+
+	&.portrait {
+		width: 35%;
+	}
 
 	@media (max-width: 600px){
 		width: 100%;
-		margin-bottom: calc(40px + #{2vw});
+		margin-bottom: $section-content-margin-mob;
 	}
 }
 
@@ -102,15 +108,14 @@ $max-text-width: 1300px;
 }
 
 
-.project .project-section .image-group .image-wrap {
-	position: relative;
-	display: inline-block;
-	width: calc(50% + #{$image-overlap/2});
-	margin-bottom: -$image-overlap;
+.project .project-section .image-group .image-wrap{
+	margin-bottom: -60px;
 
-	@media (max-width: 600px){
-		width: 90%;
-		margin-bottom: 10px;
+	&:nth-child(odd){
+	}
+
+	&:nth-child(even){
+		margin-left: 55%;
 	}
 
 	&:last-child{
@@ -119,92 +124,47 @@ $max-text-width: 1300px;
 }
 
 
-.project .project-section .image-group:nth-of-type(even) {
-	.image-wrap:nth-child(even){
-		.image-caption {
-			padding-right: $image-overlap*2;
-		}
-		&.portrait{
-			padding-left: 10%;
-			padding-right: 0;
-			@media (max-width: 600px){
-				padding-left: 0;
-			}
-		}
-	}
-	
-	.image-wrap:nth-child(odd){
-		float: right;
-		.image-caption {
-			padding-left: $image-overlap*2;
-			text-align: right;
-		}
-		&.portrait {
-			padding-right: 10%;
-			padding-left: 0;
-			@media (max-width: 600px){
-				padding-right: 0;
-			}
-		}
-	}
-}
-
-
-.project .project-section .image-group:nth-of-type(odd) {
-	.image-wrap:nth-child(even){
-		float: right;
-		.image-caption {
-			padding-left: $image-overlap*2;
-			text-align: right;
-		}
-		&.portrait {
-			padding-right: 10%;
-			padding-left: 0;
-			@media (max-width: 600px){
-				padding-right: 0;
-			}
-		}
-	}
-
-
-	.image-wrap:nth-child(odd){
-		.image-caption {
-			padding-right: $image-overlap*2;
-		}
-		&.portrait{
-			padding-left: 10%;
-			padding-right: 0;
-			@media (max-width: 600px){
-				padding-left: 0;
-			}
-		}
-	}
-}
-
-
 
 .project .project-section .image-wrap.portrait{
-	padding-left: 15%;
+	margin-left: 10%;
 	@media (max-width: 600px){
 		padding-left: 0;
 	}
 }
 
 
-.project .project-section .image-dip > div .image-wrap{
-	width: 80%;
-	margin: 0 auto 0 auto;
+.project .project-section .image-dip .image-wrap{
+	width: 45%;
+	margin: 0;
+	display: inline-block;
+	// float: left;
+	vertical-align: middle;
+
+	&:first-child{
+		margin-right: calc(10% - #{4px});
+	}
 }
 
+
+.project .project-section .image-text-group .image-wrap{
+	width: 45%;
+	margin: 0;
+	display: inline-block;
+	vertical-align: middle;
+
+	&:first-child{
+		margin-right: calc(10% - #{4px});
+	}
+}
+
+
+.project .project-section .image-text-group .image-wrap.portrait:nth-child(even){
+	margin-left: 0;
+}
 
 
 //image styling
 
-.project .project-section .image-group .image-wrap img{
-	position: relative;
-	display: block;
-	width: 100%;
-}
 
 .project .project-section .image-wrap img{
 	width: 100%;
@@ -217,6 +177,7 @@ $max-text-width: 1300px;
 .project .project-section .image-wrap .image-caption {
 	margin: 10px 0 0 0;
 	position: absolute;
+	max-width: 100%;
 	@media (max-width: 600px){
 		position: relative;
 		margin-bottom: 10px;
@@ -230,7 +191,31 @@ $max-text-width: 1300px;
 
 .project .project-section .image-wrap.full-width .image-caption{
 	position: relative;
+	max-width: 30%;
 }
+
+.project .project-section .image-dip .image-wrap .image-caption{
+	position: relative;
+}
+
+
+
+//image-text-group styling
+.project .project-section .image-text-group{
+	margin: 0 auto 100px auto;
+	width: 100%;
+	max-width: 1500px;
+	// background: rgba(0,255,0,0.2);
+
+	p {
+		width: 100%;
+	}
+
+	> :nth-child(odd) {
+		margin-right: calc(10% - #{5px});
+	}
+}
+
 
 
 
@@ -238,19 +223,18 @@ $max-text-width: 1300px;
 
 .project .project-section .text-block {
 	width: 100%;
-	margin-bottom: calc(100px + #{2vw});
-	display: inline-block;
+	margin-bottom: $section-content-margin;
 	padding-left: 10%;
 
 	@media (max-width: 600px){
 		padding-right: 10%;
-		margin-bottom: calc(40px + #{2vw});
+		margin-bottom: $section-content-margin-mob;
 	}
 
 	p {
 		margin: 0;
 		padding: 0 0 15px 0;
-		width: 66%;
+		width: 70%;
 		max-width: $max-text-width;
 
 		@media (max-width: 600px){
@@ -263,26 +247,20 @@ $max-text-width: 1300px;
 	}
 }
 
-.project .project-section .text-block.inline {
-	width: calc(49% - #{$image-overlap/2});
-	margin-bottom: calc(100px + #{2vw});;
-	vertical-align: middle;
-	display: inline-block;
-	padding: 0;
 
-	@media (max-width: 600px){
-		width: 100%;
-		margin-bottom: calc(40px + #{2vw});
+.project .project-section .image-text-group .text-block{
+	width: 35%;
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	margin-bottom: 0;
+
+	&:nth-child(odd){
+		margin-left: 10%;
 	}
 
 	p {
-		margin: 0 auto 0 auto;
-		padding: 0 15% 15px 15%;
 		width: 100%;
-
-		&:last-child {
-			padding-bottom: 0;
-		}
 	}
 }
 
