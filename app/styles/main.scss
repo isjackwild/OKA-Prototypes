@@ -1,0 +1,73 @@
+// bower:scss
+// endbower
+@import "homepage";
+@import "project";
+@import "typography";
+
+$sidebar-width: 40px;
+$sidebar-width-expanded: 280px;
+$page-transition-speed: 0.44s;
+$menu-hover-speed: 0.33s;
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background: #fafafa;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #333;
+  padding: 0;
+  margin: 0;
+  height: auto;
+}
+
+body.mouseover-menu .page-context {
+  transform: translateX($sidebar-width-expanded);
+}
+
+body.mouseover-menu .left-context {
+  width: calc(#{$sidebar-width-expanded} + #{$sidebar-width});
+}
+
+
+.left-context, .page-context {
+  position: absolute;
+  height: 100%;
+}
+
+.left-context {
+  width: $sidebar-width;
+  height: 100%;
+  float: left;
+  transition: width $menu-hover-speed;
+  background: #ddd;
+}
+
+.page-context {
+  width: calc(100% - #{$sidebar-width});
+  position: absolute;
+  top: 0;
+  height: 100%;
+  overflow-y: scroll;
+  left: $sidebar-width;
+  background: white;
+  transition: width $page-transition-speed, height $page-transition-speed, top $page-transition-speed, left $page-transition-speed, transform $menu-hover-speed;
+}
+
+.clearfix:after{
+  content: '';
+  clear: both;
+  position: relative;
+  width: 100%;
+  height: 1px;
+  display: inline-block;
+}
+
+img{
+  border: 1px solid #828282;
+}
