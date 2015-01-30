@@ -28,7 +28,6 @@ $('.tile-inner-wrap').on 'click', (e) ->
 $('.image-wrap').on 'click', (e)->
 	x = Math.floor Math.random()*imageFilenames.length
 	newSrc = 'images/' + imageFilenames[x]
-	console.log newSrc, $(e.currentTarget).find('img')
 	$(e.currentTarget).find('img')[0].src = newSrc
 	if newSrc.indexOf('portrait') >= 0
 		$(e.currentTarget).addClass 'portrait'

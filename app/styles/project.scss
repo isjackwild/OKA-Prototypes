@@ -1,12 +1,15 @@
-$image-overlap: 40px;
+$image-overlap: 20px;
 $max-text-width: 1300px;
 
 $section-content-margin: calc(130px + #{4vw});
 $section-content-margin-mob: calc(40px + #{2vw});
 
+$vertical-centre-margin: 20px;
+
 
 .page-context.project{
 	padding: 40px;
+	padding-right: 74px;
 	@media (max-width: 600px){
 		padding: 20px;
 	}
@@ -69,12 +72,20 @@ $section-content-margin-mob: calc(40px + #{2vw});
 }
 
 .project .project-section .image-dip{
-	padding: 50px 0;
 	margin: 0 auto 100px auto;
 	width: 100%;
 	max-width: 1500px;
 	// background: rgba(0,0,255,0.2);
-	white-space: nowrap;
+	font-size: 0;
+}
+
+
+.project .project-section .image-trip{
+	margin: 0 auto 100px auto;
+	width: 100%;
+	max-width: 1500px;
+	// background: rgba(0,0,255,0.2);
+	font-size: 0;
 }
 
 
@@ -82,13 +93,13 @@ $section-content-margin-mob: calc(40px + #{2vw});
 //image-wrap styling
 .project .project-section .image-wrap {
 	display: inline-block;
-	width: 45%;
+	width: calc(50% + #{$image-overlap/2});
 	vertical-align: middle;
 	margin-bottom: $section-content-margin;
 	position: relative;
 
 	&.portrait {
-		width: 35%;
+		width: calc(40% + #{$image-overlap/2});
 	}
 
 	@media (max-width: 600px){
@@ -109,20 +120,28 @@ $section-content-margin-mob: calc(40px + #{2vw});
 
 
 .project .project-section .image-group .image-wrap{
-	margin-bottom: -60px;
-
-	&:nth-child(odd){
-	}
+	margin-bottom: -$image-overlap;
 
 	&:nth-child(even){
-		margin-left: 55%;
-	}
-
-	&:last-child{
-		margin-bottom: 0;
+		margin-left: calc(50% - #{$image-overlap/2});
 	}
 }
 
+
+.project .project-section .image-group.start-right .image-wrap{
+	margin-bottom: -$image-overlap;
+
+	&:nth-child(odd){
+		margin-left: calc(50% - #{$image-overlap/2});
+	}
+
+	&:nth-child(even){
+		margin-left: 0;
+		&.portrait{
+			margin-left: 10%;
+		}
+	}
+}
 
 
 .project .project-section .image-wrap.portrait{
@@ -134,25 +153,38 @@ $section-content-margin-mob: calc(40px + #{2vw});
 
 
 .project .project-section .image-dip .image-wrap{
-	width: 45%;
+	width: calc(50% - #{$vertical-centre-margin/2});
 	margin: 0;
 	display: inline-block;
-	vertical-align: middle;
+	vertical-align: bottom;
 
 	&:first-child{
-		margin-right: calc(10% - #{4px});
+		margin-right: $vertical-centre-margin;
+	}
+}
+
+
+.project .project-section .image-trip .image-wrap{
+	width: calc(33% - #{$vertical-centre-margin/2});
+	margin: 0;
+	display: inline-block;
+	vertical-align: bottom;
+	margin-right: $vertical-centre-margin;
+
+	&:last-child{
+		margin-right: 0;
 	}
 }
 
 
 .project .project-section .image-text-group .image-wrap{
-	width: 45%;
+	width: calc(50% - #{$vertical-centre-margin/2});
 	margin: 0;
 	display: inline-block;
 	vertical-align: middle;
 
 	&:first-child{
-		margin-right: calc(10% - #{4px});
+		margin-right: $vertical-centre-margin;
 	}
 }
 
@@ -162,8 +194,8 @@ $section-content-margin-mob: calc(40px + #{2vw});
 }
 
 
-//image styling
 
+//image styling
 
 .project .project-section .image-wrap img{
 	width: 100%;
@@ -183,19 +215,37 @@ $section-content-margin-mob: calc(40px + #{2vw});
 	}
 }
 
+
+.project .project-section .image-group .image-wrap:nth-child(odd) .image-caption{
+	padding-right: 2* $image-overlap;
+	padding-left: 0;
+}
+
+.project .project-section .image-group.start-right .image-wrap:nth-child(odd) .image-caption{
+	padding-left: 2* $image-overlap;
+	padding-right: 0;
+}
+
+.project .project-section .image-group .image-wrap:nth-child(odd):last-child .image-caption{
+	padding-right: 0;
+	padding-left: 0;
+}
+
+
 //if it's the last in a group, set relative so it fills the space
 .project .project-section .image-group .image-wrap:last-child .image-caption {
 	position: relative;
 }
+
 
 .project .project-section .image-wrap.full-width .image-caption{
 	position: relative;
 	max-width: 30%;
 }
 
-.project .project-section .image-dip .image-wrap .image-caption{
-	position: relative;
-}
+// .project .project-section .image-dip .image-wrap .image-caption{
+// 	position: relative;
+// }
 
 
 
@@ -204,6 +254,7 @@ $section-content-margin-mob: calc(40px + #{2vw});
 	margin: 0 auto 100px auto;
 	width: 100%;
 	max-width: 1500px;
+	font-size: 0;
 	// background: rgba(0,255,0,0.2);
 
 	p {
@@ -211,7 +262,7 @@ $section-content-margin-mob: calc(40px + #{2vw});
 	}
 
 	> :nth-child(odd) {
-		margin-right: calc(10% - #{5px});
+		margin-right: $vertical-centre-margin;
 	}
 }
 
@@ -248,18 +299,26 @@ $section-content-margin-mob: calc(40px + #{2vw});
 
 
 .project .project-section .image-text-group .text-block{
-	width: 35%;
+	width: calc(50% - #{$vertical-centre-margin/2});
 	position: relative;
 	display: inline-block;
 	vertical-align: middle;
 	margin-bottom: 0;
-
-	&:nth-child(odd){
-		margin-left: 10%;
-	}
+	padding-left: 0;
 
 	p {
 		width: 100%;
 	}
 }
 
+
+.project .project-section .quote-block{
+	width: calc(50% - #{$vertical-centre-margin/2});
+	// background: rgba(0,255,0,0.2);
+	display: inline-block;
+	vertical-align: bottom;
+}
+
+.project .project-section .quote-block img{
+	width: 130px;
+}
