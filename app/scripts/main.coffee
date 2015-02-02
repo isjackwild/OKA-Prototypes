@@ -16,13 +16,13 @@ $('.left-context').on 'mouseleave', ->
 	$('body').removeClass 'mouseover-menu'
 
 
-$('.tile-inner-wrap').on 'click', (e) ->
-	$target = $(e.currentTarget)
+# $('.tile-inner-wrap').on 'click', (e) ->
+# 	$target = $(e.currentTarget)
 
-	$.ajax
-		url: "project-template.html"
-	.done (data) ->
-		onContentLoad $target, data
+# 	$.ajax
+# 		url: "project-template.html"
+# 	.done (data) ->
+# 		onContentLoad $target, data
 
 
 $('.image-wrap').on 'click', (e)->
@@ -36,30 +36,49 @@ $('.image-wrap').on 'click', (e)->
 
 
 
+$('a.history-link').on 'click', (e) ->
+	$target = $($(e.currentTarget).children()[0])
+	e.preventDefault();
+
+	$.ajax
+		url: e.currentTarget.href
+	.done (data) ->
+		onContentLoad $target, data
+		history.pushState(null, null, e.currentTarget.href);
+
+
+$(window).on 'popstate', (e) ->
+	console.log location.pathname
+	$.ajax
+		url: location.pathname
+	.done (data) ->
+		onContentLoad null, data
+
+
 onContentLoad = ($target, data) ->
-	x = $target.offset().left;
-	y = $target.offset().top;
-	w = $target.width();
-	h = $target.height()
+	console.log 'on content loaded'
+	if $target
+		x = $target.offset().left - 40;
+		y = $target.offset().top;
+		w = $target.width();
+		h = $target.height()
 
 
 	newPageContext = document.createElement 'div'
 	newPageContext.className = 'page-context mini incoming project'
-	newPageContext.style.left = x+'px'
-	newPageContext.style.top = y+'px'
-	newPageContext.style.width = w+'px'
-	newPageContext.style.height = h+'px'
+
+	if $target
+		newPageContext.style.clip = 'rect(+'+y+'px,'+(x+w)+'px,'+(y+h)+'px,'+x+'px)'
 
 	$('.page-context-wrap').append newPageContext
-
+	$('.page-context.incoming').prepend data
 	setTimeout ->
 		$('.page-context.incoming').attr 'style', ''
-	,50
+	,10
 
 	setTimeout ->
 		$('.page-context.incoming').removeClass 'mini incoming'
 		$('.page-context.outgoing').remove()
 		$('.page-context').addClass 'outgoing'
-		$('.page-context').prepend data
 		newPageContext = undefined
-	,444
+	,4444

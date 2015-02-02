@@ -27,21 +27,20 @@
   overflow-y: hidden;
   padding-left: 20px;
   white-space: nowrap;
-  height: 420px;
+  // height: 420px;
   margin-bottom: 50px;
 }
 
 .homepage .selected-project .scrolling-projects .tile {
   width: 240px;
-  height: 420px;
+  height: auto;
   margin-right: 30px;
   position: relative;
   display: inline-block;
 }
 
 .homepage .selected-project .scrolling-projects .tile .tile-inner-wrap {
-  position: absolute;
-  bottom: 0;
+  display: block;
 }
 
 .homepage .selected-project .scrolling-projects .tile img {

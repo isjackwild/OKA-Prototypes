@@ -6,7 +6,7 @@
 
 $sidebar-width: 40px;
 $sidebar-width-expanded: 280px;
-$page-transition-speed: 0.44s;
+$page-transition-speed: 0.33s;
 $menu-hover-speed: 0.33s;
 
 * {
@@ -56,8 +56,10 @@ body.mouseover-menu .left-context {
   overflow-y: scroll;
   left: $sidebar-width;
   background: white;
-  transition: width $page-transition-speed, height $page-transition-speed, top $page-transition-speed, left $page-transition-speed, transform $menu-hover-speed;
+  clip: rect(0, 100vw, 100vh, 0);
+  transition: clip $page-transition-speed, transform $menu-hover-speed;
 }
+
 
 .clearfix:after{
   content: '';
