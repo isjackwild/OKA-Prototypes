@@ -1,0 +1,102 @@
+@import "variables";
+
+.page-context.article{
+	padding: 40px;
+	padding-right: 74px;
+	@media (max-width: 600px){
+		padding: 20px;
+	}
+}
+
+.article .article-section{
+	margin: 0 auto $section-content-margin auto;
+	border-bottom: 1px solid #ccc;
+	max-width: $max-text-width;
+
+	@media (max-width: 600px){
+		margin-bottom: $section-content-margin-mob;
+	}
+
+	&:last-child{
+		margin-bottom: 0;
+	}
+}
+
+
+.article .article-section.intro .cover {
+	position: relative;
+	margin-bottom: 75px;
+}
+
+.article .article-section.intro .cover .image-wrap img{
+	width: 100%;
+}
+
+.article .article-section.intro .cover .title {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+.article .article-section.intro .cover .title h1, .article .article-section.intro .cover .title h2{
+	width: 100%;
+	text-align: center;
+}
+
+.article .article-section.intro p.intro{
+	width: 100%;
+	max-width: $max-text-width;
+	margin: 0 auto;
+}
+
+.article .article-section h3{
+	width: 100%;
+	max-width: $max-article-p-width;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.article .article-section h4{
+	width: 100%;
+	max-width: $max-article-p-width;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.article .article-section h5{
+	width: 100%;
+	max-width: $max-article-p-width;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.article .article-section p{
+	width: 100%;
+	max-width: $max-article-p-width;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.article .article-section .thumbnail-gallery {
+	margin-right: -15px;
+	margin-bottom: -15px;
+	background: blue;
+}
+
+.article .article-section .thumbnail-gallery .image-wrap{
+	width: calc(25% - #{15px});
+	float: left;
+	display: inline-block;
+	position: relative;
+	margin-right: 15px;
+	margin-bottom: 15px;
+
+	&:nth-child(4){
+		margin-right: 0;
+	}
+	//do similar thing to find last row. I found a solution once, starred or emailed to self
+}
+
+.article .article-section .thumbnail-gallery .image-wrap img{
+	width: 100%;
+}

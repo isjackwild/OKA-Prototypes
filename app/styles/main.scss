@@ -1,13 +1,19 @@
 // bower:scss
 // endbower
-@import "homepage";
-@import "project";
+//import variables & typo
+@import "variables";
 @import "typography";
 
-$sidebar-width: 40px;
-$sidebar-width-expanded: 280px;
-$page-transition-speed: 0.33s;
-$menu-hover-speed: 0.33s;
+
+//import page styling
+@import "homepage";
+@import "project";
+@import "article";
+
+
+//import module styling
+@import "scroller";
+
 
 * {
   -webkit-box-sizing: border-box;

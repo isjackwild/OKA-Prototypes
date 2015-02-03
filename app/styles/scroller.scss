@@ -1,0 +1,25 @@
+.scrolling-projects {
+  // width: auto;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  padding-left: 20px;
+  white-space: nowrap;
+  // height: 420px;
+  margin-bottom: 50px;
+}
+
+.scrolling-projects .tile {
+  width: calc(120px + #{7vw});
+  height: auto;
+  margin-right: 30px;
+  position: relative;
+  display: inline-block;
+}
+
+.scrolling-projects .tile .tile-inner-wrap {
+  display: block;
+}
+
+.scrolling-projects .tile img {
+  width: 100%;
+}

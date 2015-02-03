@@ -1,23 +1,19 @@
-$image-overlap: 20px;
-$max-text-width: 1300px;
-
-$section-content-margin: calc(130px + #{4vw});
-$section-content-margin-mob: calc(40px + #{2vw});
-
-$vertical-centre-margin: 20px;
+@import "variables";
 
 
 .page-context.project{
 	padding: 40px;
 	padding-right: 74px;
+
 	@media (max-width: 600px){
 		padding: 20px;
 	}
 }
 
 .project .project-section{
-	margin-bottom: $section-content-margin;
+	margin: 0 auto $section-content-margin auto;
 	border-bottom: 1px solid #ccc;
+	max-width: $max-text-width;
 
 	@media (max-width: 600px){
 		margin-bottom: $section-content-margin-mob;
@@ -100,6 +96,10 @@ $vertical-centre-margin: 20px;
 
 	&.portrait {
 		width: calc(40% + #{$image-overlap/2});
+
+		@media (max-width: 600px){
+			margin-bottom: $section-content-margin-mob;
+		}
 	}
 
 	@media (max-width: 600px){
@@ -122,23 +122,55 @@ $vertical-centre-margin: 20px;
 .project .project-section .image-group .image-wrap{
 	margin-bottom: -$image-overlap;
 
+	@media (max-width: 600px){
+		margin-bottom: 10px;
+		width: 95%;
+
+		&.portrait{
+			width: 80%;
+		}
+
+	}
+
 	&:nth-child(even){
 		margin-left: calc(50% - #{$image-overlap/2});
+
+		@media (max-width: 600px){
+			margin-left: 5%;
+
+			&.portrait{
+				margin-left: 20%;
+			}
+		}
+
 	}
 }
 
 
 .project .project-section .image-group.start-right .image-wrap{
-	margin-bottom: -$image-overlap;
 
 	&:nth-child(odd){
 		margin-left: calc(50% - #{$image-overlap/2});
+
+		@media (max-width: 600px){
+			margin-left: 5%;
+
+			&.portrait{
+				margin-left: 20%;
+			}
+		}
+
 	}
 
 	&:nth-child(even){
 		margin-left: 0;
 		&.portrait{
 			margin-left: 10%;
+
+			@media (max-width: 600px){
+				margin-left: 0;
+			}
+
 		}
 	}
 }
@@ -147,7 +179,7 @@ $vertical-centre-margin: 20px;
 .project .project-section .image-wrap.portrait{
 	margin-left: 10%;
 	@media (max-width: 600px){
-		padding-left: 0;
+		margin-left: 0;
 	}
 }
 
@@ -161,6 +193,13 @@ $vertical-centre-margin: 20px;
 	&:first-child{
 		margin-right: $vertical-centre-margin;
 	}
+
+	@media (max-width: 600px){
+		width: 100%;
+		margin-right: 0;
+		margin-bottom: 10px;
+	}
+
 }
 
 
@@ -211,7 +250,8 @@ $vertical-centre-margin: 20px;
 	max-width: 100%;
 	@media (max-width: 600px){
 		position: relative;
-		margin-bottom: 10px;
+		margin-bottom: -5px;
+		margin-top: 0px;
 	}
 }
 
@@ -219,17 +259,37 @@ $vertical-centre-margin: 20px;
 .project .project-section .image-group .image-wrap:nth-child(odd) .image-caption{
 	padding-right: 2* $image-overlap;
 	padding-left: 0;
+	@media (max-width: 600px){
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
+.project .project-section .image-group .image-wrap:nth-child(even) .image-caption{
+	padding-left: 2* $image-overlap;
+	padding-right: 0;
+	@media (max-width: 600px){
+		padding-left: 0;
+		padding-right: 0;
+	}
 }
 
 .project .project-section .image-group.start-right .image-wrap:nth-child(odd) .image-caption{
 	padding-left: 2* $image-overlap;
 	padding-right: 0;
+	@media (max-width: 600px){
+		padding-left: 0;
+		padding-right: 0;
+	}
 }
 
 .project .project-section .image-group .image-wrap:nth-child(odd):last-child .image-caption{
 	padding-right: 0;
 	padding-left: 0;
 }
+
+
+
 
 
 //if it's the last in a group, set relative so it fills the space
@@ -276,6 +336,10 @@ $vertical-centre-margin: 20px;
 	margin-bottom: $section-content-margin;
 	padding-left: 10%;
 
+	&:last-child{
+		margin-bottom: 0;
+	}
+
 	@media (max-width: 600px){
 		padding-right: 10%;
 		margin-bottom: $section-content-margin-mob;
@@ -321,4 +385,24 @@ $vertical-centre-margin: 20px;
 
 .project .project-section .quote-block img{
 	width: 130px;
+}
+
+
+.project .project-section table{
+	width: 100%;
+
+	tr {
+		width: 100%;
+	}
+
+	td:nth-child(2){
+		width: 55%;
+	}
+
+	td:first-child{
+		width: 45%;
+		padding-right: 10px;
+		font-weight: bold;
+	}
+
 }
