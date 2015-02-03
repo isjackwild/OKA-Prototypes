@@ -12,7 +12,7 @@
 
 .project .project-section{
 	margin: 0 auto $section-content-margin auto;
-	border-bottom: 1px solid #ccc;
+	// border-bottom: 1px solid #ccc;
 	max-width: $max-text-width;
 
 	@media (max-width: 600px){
@@ -184,6 +184,11 @@
 
 .project .project-section .image-wrap.portrait{
 	margin-left: 10%;
+
+	&.full-width {
+		margin-left: 0;
+	}
+
 	@media (max-width: 600px){
 		margin-left: 0;
 	}
@@ -223,7 +228,7 @@
 
 
 .project .project-section .image-text-group .image-wrap{
-	width: calc(50% - #{$vertical-centre-margin/2});
+	width: 60%;
 	margin: 0;
 	display: inline-block;
 	vertical-align: middle;
@@ -231,7 +236,33 @@
 	&:first-child{
 		margin-right: $vertical-centre-margin;
 	}
+
+	@media (max-width: 600px){
+		width: 100%;
+	}
 }
+
+.project .project-section .image-text-group .quote-block{
+	width: calc(40% - #{$vertical-centre-margin});
+	margin: 0;
+	display: inline-block;
+	vertical-align: middle;
+	max-width: 100%;
+	padding-left: 3%;
+
+	h5{
+		font-size: initial;
+	}
+
+	&:first-child{
+		margin-right: $vertical-centre-margin;
+	}
+
+	@media (max-width: 600px){
+		width: 100%;
+	}
+}
+
 
 
 .project .project-section .image-text-group .image-wrap.portrait:nth-child(even){
@@ -363,14 +394,24 @@
 	p {
 		width: 100%;
 	}
+
+	@media (max-width: 600px){
+		width: 100%;
+	}
 }
 
 
 .project .project-section .quote-block{
-	width: 100%;
-	max-width: $max-article-p-width/2;
-	margin-left: auto;
-	margin-right: auto;
+	width: calc(50% - #{$vertical-centre-margin/2});
+	margin-bottom: $section-content-margin-mob;
+
+	&:last-child{
+		margin-bottom: 0;
+	}
+
+	@media (max-width: 600px){
+		width: 100%;
+	}
 }
 
 .project .project-section .quote-block h5{

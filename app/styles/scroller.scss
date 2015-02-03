@@ -1,3 +1,5 @@
+@import "variables";
+
 .scrolling-projects {
   // width: auto;
   overflow-x: scroll;
@@ -9,9 +11,9 @@
 }
 
 .scrolling-projects .tile {
-  width: calc(120px + #{7vw});
+  width: calc(90px + #{6vw});
   height: auto;
-  margin-right: 30px;
+  margin-right: $vertical-centre-margin;
   position: relative;
   display: inline-block;
 }
