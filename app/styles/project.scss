@@ -56,7 +56,7 @@
 //image-group styling
 
 .project .project-section .image-group {
-	margin: 0 auto 100px auto;
+	margin: 0 auto 60px auto;
 	width: 100%;
 	max-width: 1500px;
 	// background: rgba(255,0,0,0.2);
@@ -381,10 +381,22 @@
 	// background: rgba(0,255,0,0.2);
 	display: inline-block;
 	vertical-align: bottom;
+
+	@media (max-width: 600px){
+		width: 100%;
+	}
+}
+
+.project .project-section .quote-block h5{
+	width: 75%;
+	display: inline-block;
+	margin: 0 -5px 0 0;
 }
 
 .project .project-section .quote-block img{
 	width: 130px;
+	display: inline-block;
+	width: 25%;
 }
 
 
