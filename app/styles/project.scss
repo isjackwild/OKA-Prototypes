@@ -24,6 +24,12 @@
 	}
 }
 
+.project .project-section p, .project .project-section h1, .project .project-section h2, .project .project-section h3, .project .project-section h4, .project .project-section h5, .project .project-section h6{
+	max-width: $max-article-p-width;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 
 .project .project-section.intro .intro-text{
 	width: 100%;
@@ -334,7 +340,6 @@
 .project .project-section .text-block {
 	width: 100%;
 	margin-bottom: $section-content-margin;
-	padding-left: 10%;
 
 	&:last-child{
 		margin-bottom: 0;
@@ -343,21 +348,6 @@
 	@media (max-width: 600px){
 		padding-right: 10%;
 		margin-bottom: $section-content-margin-mob;
-	}
-
-	p {
-		margin: 0;
-		padding: 0 0 15px 0;
-		width: 70%;
-		max-width: $max-text-width;
-
-		@media (max-width: 600px){
-			width: 100%;
-		}
-
-		&:last-child {
-			padding-bottom: 0;
-		}
 	}
 }
 
@@ -377,44 +367,60 @@
 
 
 .project .project-section .quote-block{
-	width: calc(50% - #{$vertical-centre-margin/2});
-	// background: rgba(0,255,0,0.2);
-	display: inline-block;
-	vertical-align: bottom;
-
-	@media (max-width: 600px){
-		width: 100%;
-	}
+	width: 100%;
+	max-width: $max-article-p-width/2;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .project .project-section .quote-block h5{
-	width: 75%;
+	width: 80%;
 	display: inline-block;
 	margin: 0 -5px 0 0;
+	@media (max-width: 600px){
+		width: 75%;
+	}
 }
 
 .project .project-section .quote-block img{
-	width: 130px;
 	display: inline-block;
-	width: 25%;
+	width: 20%;
+	@media (max-width: 600px){
+		width: 25%;
+	}
 }
 
 
 .project .project-section table{
+	margin: 0 auto;
 	width: 100%;
 
 	tr {
 		width: 100%;
+		line-height: 28px;
+	}
+
+	td {
+		display: inline-block;
 	}
 
 	td:nth-child(2){
-		width: 55%;
+		width: calc(50% + #{$image-overlap});
+		padding-left: $image-overlap/2;
+		@media (max-width: 600px){
+			width: 55%;
+		}
 	}
 
 	td:first-child{
-		width: 45%;
-		padding-right: 10px;
+		width: calc(50% - #{$image-overlap});
 		font-weight: bold;
+		padding-left: 15%;
+
+		@media (max-width: 600px){
+			padding-left: 0;
+			width: 45%;
+		}
 	}
 
 }
