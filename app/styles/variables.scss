@@ -1,21 +1,274 @@
-//sizes
-$max-text-width: 1300px;
-$max-article-p-width: 700px;
+//media
+$mobile-is-under: 768px;
+$xl-is-over: 1850px;
+
+
+
+
+//fixed sizes
 $sidebar-width: 40px;
 $sidebar-width-expanded: 280px;
-
-
-
-
-//margins
-$section-content-margin: calc(90px + #{4vw});
-$section-content-margin-mob: calc(40px + #{2vw});
-$image-overlap: 20px;
-$vertical-centre-margin: 20px;
-
 
 
 
 //transitions
 $page-transition-speed: 0.33s;
 $menu-hover-speed: 0.33s;
+
+
+
+//horizontal spacing
+$section-content-margin: calc(90px + #{4vw});
+$section-content-margin-mob: calc(40px + #{2vw});
+
+
+
+//vertical spacing
+$image-overlap: 20px;
+$vertical-centre-gutter: 20px;
+
+
+//vertical grid system.
+//we have the outer page, an outer column and an inner column. Using this and the margins between them we can work out all spacing
+
+
+//example to calculate margins. BUT issue with screen max-width and calculating margins. So use MQ's for larger screens.
+$inner-col: 60%;
+$outer-col: 75%;
+
+//DONT CHANGE THESE!!!!
+//edge of page to outer column
+$inner-left-margin: calc(50% - #{$inner-col/2});
+//edge of page to inner column
+$outer-left-margin: calc(50% - #{$outer-col/2});
+//the difference between the outer margin and the inner margin
+$outer-to-inner-margin: $outer-col/2 - $inner-col/2;
+//!!!!
+
+
+//for screens over 2000px vw
+//change these
+$inner-col-mq-xl: 900px;
+$outer-col-mq-xl: 1200px;
+
+
+//DONT CHANGE THESE
+$inner-left-margin-mq-xl: calc(50% - #{$outer-col-mq-xl/2});
+$outer-left-margin-mq-xl: calc(50% - #{$outer-col-mq-xl/2});
+$outer-to-inner-margin-mq-xl: calc(#{$outer-col-mq-xl/2} - #{$inner-col-mq-xl/2});
+//!!!!
+
+
+//for screens under 768px
+//change these
+$inner-col-mq-mob: 90%;
+$outer-col-mq-mob: 95%;
+
+//DONT CHANGE THESE
+$inner-left-margin-mq-mob: calc(50% - #{$outer-col-mq-mob/2});
+$outer-left-margin-mq-mob: calc(50% - #{$outer-col-mq-mob/2});
+$outer-to-inner-margin-mq-mob: calc(#{$outer-col-mq-xl/2} - #{$inner-col-mq-xl/2});
+//!!!!
+
+
+
+//for common use cases, to add margins and widths which fit to the grid use these, and they have the media-queries included
+%inner-col-width{
+	width: $inner-col;
+
+	@media (min-width: $xl-is-over){
+		width: $inner-col-mq-xl;
+	}
+
+	@media (max-width: $mobile-is-under){
+		width: $inner-col-mq-mob;
+	}
+}
+
+
+%outer-col-width{
+	width: $outer-col;
+
+	@media (min-width: $xl-is-over){
+		width: $outer-col-mq-xl;
+	}
+
+	@media (max-width: $mobile-is-under){
+		width: $outer-col-mq-mob;
+	}
+}
+
+
+%inner-col-width-half{
+	width: $inner-col/2;
+
+	@media (min-width: $xl-is-over){
+		width: $inner-col-mq-xl/2;
+	}
+
+	@media (max-width: $mobile-is-under){
+		width: $inner-col-mq-mob/2;
+	}
+}
+
+
+%outer-col-width-half{
+	width: $outer-col/2;
+
+	@media (min-width: $xl-is-over){
+		width: $outer-col-mq-xl/2;
+	}
+
+	@media (max-width: $mobile-is-under){
+		width: $outer-col-mq-mob/2;
+	}
+}
+
+%outer-to-inner-width{
+	width: $outer-to-inner-margin;
+
+	@media (min-width: $xl-is-over){
+		width: $outer-to-inner-margin-mq-xl;
+	}
+
+	@media (max-width: $mobile-is-under){
+		width: $outer-to-inner-margin-mq-mob;
+	}
+}
+
+
+%inner-left-margin{
+	margin-left: $inner-left-margin;
+
+	@media (min-width: $xl-is-over){
+		margin-left: $inner-left-margin-mq-xl;
+	}
+
+	@media (max-width: $mobile-is-under){
+		margin-left: $inner-left-margin-mq-mob;
+	}
+}
+
+
+%outer-left-margin{
+	margin-left: $outer-left-margin;
+
+	@media (min-width: $xl-is-over){
+		margin-left: $outer-left-margin-mq-xl;
+	}
+
+	@media (max-width: $mobile-is-under){
+		margin-left: $outer-left-margin-mq-mob;
+	}
+}
+
+%inner-right-margin{
+	margin-right: $inner-left-margin;
+
+	@media (min-width: $xl-is-over){
+		margin-right: $inner-left-margin-mq-xl;
+	}
+
+	@media (max-width: $mobile-is-under){
+		margin-right: $inner-left-margin-mq-mob;
+	}
+}
+
+
+%outer-right-margin{
+	margin-right: $outer-left-margin;
+
+	@media (min-width: $xl-is-over){
+		margin-right: $outer-left-margin-mq-xl;
+	}
+
+	@media (max-width: $mobile-is-under){
+		margin-right: $outer-left-margin-mq-mob;
+	}
+}
+
+%outer-to-inner-l-margin{
+	margin-left: $outer-to-inner-margin;
+
+	@media (min-width: $xl-is-over){
+		width: $outer-to-inner-margin-mq-xl;
+	}
+
+	@media (max-width: $mobile-is-under){
+		width: $outer-to-inner-margin-mq-mob;
+	}
+}
+
+
+
+//example usage
+.usage-example p{
+	@extend %inner-col-width;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.usage-example p.large{
+	@extend %outer-col-width;
+}
+
+.usage-example p.pull-left{
+	@extend %inner-col-width;
+	@extend %inner-left-margin;
+}
+
+
+//this is an exception with a text width of 0.66. So we need to add in the MQ's
+.usage-example .image-wrap{
+	width: $inner-col/0.66;
+	@extend %inner-left-margin;
+
+	//and MQ's because this is an exception
+	@media (min-width: $xl-is-over){
+		width: $inner-col-mq-xl/0.66;
+	}
+
+	@media (max-width: $mobile-is-under){
+		width: $inner-col-mq-xl/0.66;
+	}
+}
+
+.usage-example .image-wrap.pull-left{
+	@extend %inner-col-width-half;
+	@extend %outer-left-margin;
+}
+
+
+.usage-example .image-group{
+	@extend %outer-col-width;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+}
+
+
+//some things will have to be calculated manually, as here. 
+.usage-example .image-group .image-wrap{
+	width: calc(50% + #{$image-overlap/2});
+
+	&.portrait{
+		//I'm 95% sure you can't do this with calc, so in exceptions we have to calculate this ourselves. But do it like this
+		width: calc((50% - #{$outer-to-inner-margin}) + #{$image-overlap/2});
+		@extend %outer-to-inner-l-margin;
+
+		@media (min-width: 2000px){
+			//I'm 95% sure you can't do this with calc, so in exceptions we have to calculate this ourselves. But do it like this
+			width: calc((50% - #{$outer-to-inner-margin-mq-xl}) + #{$image-overlap/2});
+		}
+
+		@media (max-width: 767px){
+			//I'm 95% sure you can't do this with calc, so in exceptions we have to calculate this ourselves
+			width: calc((50% - #{$outer-to-inner-margin-mq-mob}) + #{$image-overlap/2});
+		}
+
+	}
+
+	&:nth-child(2){
+		margin-left: calc(50% - #{$image-overlap/2});
+	}
+}

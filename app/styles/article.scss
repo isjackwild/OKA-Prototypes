@@ -1,19 +1,19 @@
 @import "variables";
 
+//ONLY article specific styles in here. etc... all other styles in module, global or typo files
+
 .page-context.article{
 	padding: 40px;
 	padding-right: 74px;
-	@media (max-width: 600px){
+	@media (max-width: $mobile-is-under){
 		padding: 20px;
 	}
 }
 
 .article .article-section{
 	margin: 0 auto $section-content-margin auto;
-	border-bottom: 1px solid #ccc;
-	max-width: $max-text-width;
 
-	@media (max-width: 600px){
+	@media (max-width: $mobile-is-under){
 		margin-bottom: $section-content-margin-mob;
 	}
 
@@ -23,6 +23,7 @@
 }
 
 
+//dont nest so deeply, unless totally necesarry. 
 .article .article-section.intro .cover {
 	position: relative;
 	margin-bottom: 75px;
@@ -44,59 +45,145 @@
 }
 
 .article .article-section.intro p.intro{
-	width: 100%;
-	max-width: $max-text-width;
-	margin: 0 auto;
+	@extend %outer-col-width;
+	margin-bottom: 70px;
 }
 
 .article .article-section h3{
-	width: 100%;
-	max-width: $max-article-p-width;
+	@extend %inner-col-width;
 	margin-left: auto;
 	margin-right: auto;
 }
 
 .article .article-section h4{
-	width: 100%;
-	max-width: $max-article-p-width;
+	@extend %inner-col-width;
 	margin-left: auto;
 	margin-right: auto;
 }
 
 .article .article-section h5{
-	width: 100%;
-	max-width: $max-article-p-width;
+	@extend %inner-col-width;
 	margin-left: auto;
 	margin-right: auto;
 }
 
 .article .article-section p{
-	width: 100%;
-	max-width: $max-article-p-width;
+	@extend %inner-col-width;
 	margin-left: auto;
 	margin-right: auto;
 }
 
+.article .article-section p.pull-out{
+	width: 50%;
+	@extend %outer-left-margin;
+	margin-right: auto;
+
+	//this should probably go in typography.scss
+	font-weight: bold;
+	font-size: 1.8em;
+
+	@media (max-width: $mobile-is-under){
+		width: 100%;
+	}
+
+	@media (min-width: $xl-is-over){
+		width: 650px;
+	}
+}
+
+
+.article .article-section .image-wrap{
+	@extend %outer-col-width;
+	@extend %inner-left-margin;
+
+	img {
+		width: 100%;
+	}
+
+	p {
+		width: 100%;
+	}
+}
+
+.article .article-section .image-wrap.inline{
+	@extend %outer-col-width-half;
+	@extend %outer-left-margin;
+	margin-right: $vertical-centre-gutter;
+	float: left;
+
+	&.right{
+		float: right;
+		margin-left: $vertical-centre-gutter;
+		@extend %outer-right-margin;
+	}
+
+	&.small{
+		width: $inner-col/2;
+		@extend %inner-col-width-half;
+	}
+}
+
+.article .article-section .image-wrap.full-width{
+	width: 100%;
+	margin-left: 0;
+}
+
+
 .article .article-section .thumbnail-gallery {
-	margin-right: -15px;
+	@extend %outer-col-width;
+	margin: auto;
+	//makeup for the overlap at the bottom
 	margin-bottom: -15px;
-	background: blue;
 }
 
 .article .article-section .thumbnail-gallery .image-wrap{
-	width: calc(25% - #{15px});
+	width: calc(25% - #{45px/4});
 	float: left;
 	display: inline-block;
 	position: relative;
 	margin-right: 15px;
 	margin-bottom: 15px;
+	margin-left: 0;
+	vertical-align: bottom;
 
-	&:nth-child(4){
+	&:nth-child(4n){
 		margin-right: 0;
 	}
+
+	//select only first row
+	&:nth-child(-n+4){
+		// border: 2px solid red;
+	}
 	//do similar thing to find last row. I found a solution once, starred or emailed to self
+	&:nth-child(4n+1):nth-last-child(-n+4),
+	  &:nth-child(4n+1):nth-last-child(-n+4) ~ .image-wrap {
+	    margin-bottom: 0;
+	}
 }
 
 .article .article-section .thumbnail-gallery .image-wrap img{
 	width: 100%;
 }
+
+
+.article .article-section table{
+	margin: 0 auto;
+	position: relative;
+	width: 100%;
+
+	td{
+		display: inline-block;
+	}
+
+	td:first-child{
+		@extend %outer-to-inner-width;
+		@extend %outer-left-margin;
+		text-align: right;
+		padding-right: 25px;
+	}
+
+	td:last-child{
+		@extend %inner-col-width;
+	}
+}
+

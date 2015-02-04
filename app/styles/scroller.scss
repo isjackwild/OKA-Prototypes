@@ -11,9 +11,9 @@
 }
 
 .scrolling-projects .tile {
-  width: calc(90px + #{6vw});
+  width: calc(90px + #{10vw});
   height: auto;
-  margin-right: $vertical-centre-margin;
+  margin-right: $vertical-centre-gutter;
   position: relative;
   display: inline-block;
 }
